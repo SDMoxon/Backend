@@ -7,8 +7,17 @@ An app designed for doctors with the aim of making their lives easier. Instead o
 * Google Cloud functions
 
 ## How to use it
-* [endpoints]
-
+* API URL: 
+* Endpoints: 
+``` 
+GET /patients - gets all of the patients
+GET /patients/$id - gets patients by id
+GET /patients/$id/ward - gets patient ward, can be used to filter patients by ward
+```
+* you must add the auth code as a query 
+```
+url/endpoint.json?auth=###################
+```
 ## Sprint History
 
 ### Monday 17th July 2017
