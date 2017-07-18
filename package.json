@@ -1,0 +1,23 @@
+{
+  "name": "nhs-app-backend",
+  "version": "1.0.0",
+  "description": "An app designed for doctors with the aim of making their lives easier. Instead of using the bedside patient sheet we're building a super secure app.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/hospital-patient-management/Northcoders-Project-NHS-App-Backend.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/hospital-patient-management/Northcoders-Project-NHS-App-Backend/issues"
+  },
+  "homepage": "https://github.com/hospital-patient-management/Northcoders-Project-NHS-App-Backend#readme",
+  "devDependencies": {
+    "chai": "^4.1.0",
+    "mocha": "^3.4.2"
+  }
+}
