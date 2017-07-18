@@ -1,0 +1,236 @@
+{
+	"patients": {
+		"patientID1": {
+			"createdAt": "2015-02-13T21:27:42.078Z",
+			"updateAt": "2015-02-13T21:27:42.078Z",
+			"email": "userid1@gmail.com",
+			"firsNames": [
+				"John",
+				"Clark",
+				"the 3rd"
+			],
+			"surname": "Milton",
+			"assignedDoctor": "doctorId1"
+		}
+	},
+	"doctors": {
+		"doctorId1": {
+			"createdAt": "2015-02-13T21:27:42.078Z",
+			"updateAt": "2015-02-13T21:27:42.078Z",
+			"email": "userid1@gmail.com",
+			"firsNames": [
+				"Obi",
+				"wan"
+			],
+			"surname": "Kenobi",
+			"patients": [
+				"patientId1"
+			]
+		}
+	},
+	"nurses": {
+		"nurseID1": {
+			"createdAt": "2015-02-13T21:27:42.078Z",
+			"updateAt": "2015-02-13T21:27:42.078Z",
+			"email": "userid1@gmail.com",
+			"firsNames": [
+				"Leia"
+			],
+			"surname": "Morgana",
+			"wards": [
+				"wardId"
+			]
+		}
+	},
+	"wards": {
+		"wardId1": {
+			"createdAt": "2015-02-13T21:27:42.078Z",
+			"updateAt": "2015-02-13T21:27:42.078Z",
+			"name": "Acute Neurology Unit",
+			"building": "Humphrey Booth Building",
+			"floor": "0",
+			"doctors": [
+				"doctorId1",
+				"doctorId2"
+			],
+			"nurses": [
+				"nurseId1",
+				"nurseId2"
+			],
+			"patients": [
+				"patientId1",
+				"patientId2"
+			]
+		},
+		"wardId2": {
+			"createdAt": "2015-02-13T21:27:42.078Z",
+			"updateAt": "2015-02-13T21:27:42.078Z",
+			"name": "Acute Stroke Unit",
+			"building": "Humphrey Booth Building",
+			"Floor": "1",
+			"doctors": [
+				"doctorId3",
+				"doctorId4"
+			],
+			"nurses": [
+				"nurseId3",
+				"nurseId4"
+			],
+			"patients": [
+				"patientId3",
+				"patientId4"
+			]
+		}
+	},
+	"demographics": {
+		"patientId1": {
+			"ethnicity": "british white",
+			"gender": "male",
+			"language": "ENG",
+			"race": "White/Caucasian",
+			"dob": "03-05-1985",
+			"alcohol": {
+				"use": "yes"
+			},
+			"smoking": {
+				"status": "Never smoker"
+			}
+		}
+	},
+	"addresses": {
+		"patientId1": {
+			"city": "Vulcun City",
+			"country": "USA",
+			"state": "CA",
+			"addressLine1": "1 Milky way",
+			"addressLine2": "Salford",
+			"zip": "94025"
+		}
+	},
+	"currentMedicalStates": {
+		"patientId1": {
+			"contagionLevel": "amber",
+			"currentCondition": "pneumonia",
+			"causeOfAdmission": "strong caugh",
+			"symptoms": [
+				"severe caugh",
+				"high temperature"
+			]
+		}
+	},
+	"vitals": {
+		"patientId1": {
+			"readingsTimeline": {
+				"2014-09-02T05:50:22": {
+					"author": "doctorId1",
+					"organization": {
+						"href": "/medical/organizations/53c050ac51c69003200aa998",
+						"id": "53c050ac51c69003200aa998",
+						"name": "Salford Royal"
+					},
+					"results": {
+						"SYSTOLIC_BLOOD_PRESSURE": 102,
+						"DIASTOLIC_BLOOD_PRESSURE": 70,
+						"HEART_RATE": 80
+					}
+				},
+				"2014-09-02T05:50:22655A": {
+					"author": "doctorId2",
+					"organization": {
+						"href": "/medical/organizations/53c050ac51c69003200aa998",
+						"id": "53c050ac51c69003200aa998",
+						"name": "Salford Royal"
+					},
+					"results": {
+						"SYSTOLIC_BLOOD_PRESSURE": 102,
+						"DIASTOLIC_BLOOD_PRESSURE": 70,
+						"HEART_RATE": 80
+					}
+				}
+			}
+		}
+	},
+	"nutritionalRequierments": {
+		"patientId1": {
+			"intoleranceId1": {
+				"name": "lactose intolerance",
+				"reaction": "severe"
+			},
+			"intoleranceId2": {
+				"name": "protein intolerance",
+				"reaction": "mild"
+			}
+		}
+	},
+	"surgeries": null,
+	"prep": null,
+	"testsRan": {
+		"patientId1": {
+			"testId-datestamp": {
+				"name": "lung x-ray",
+				"linkToFiles": "link/file/lung-x-ray",
+				"organization": {
+					"href": "/medical/organizations/53c050ac51c69003200aa998",
+					"name": "Cleveland Clinic"
+				},
+				"notes": "looking good, nothing to see here"
+			}
+		}
+	},
+	"additionalSymptoms": [],
+	"medicalHistory": {},
+	"currentTreatment": {},
+	"medication": {
+		"patientId1": {
+			"medicationId-dateStamp": {
+				"name": "loratadine (CLARITIN) 10 MG tablet",
+				"commonBrandName": "CLARITIN",
+				"dosageInfo": "10 MG tablet",
+				"instructions": "Take 1 tab by mouth as needed (allergies).",
+				"details": {
+					"dosage": {
+						"form": "tablet",
+						"value": 1
+					},
+					"frequency": {
+						"number": "1",
+						"unit": "as-needed"
+					},
+					"route": "enteral_oral",
+					"strength": {
+						"number": "10",
+						"unit": "mg"
+					}
+				},
+				"ndcCode": "0781-5077-01",
+				"organization": {
+					"href": "/medical/organizations/53c050ac51c69003200aa998",
+					"name": "Cleveland Clinic"
+				}
+			}
+		}
+	},
+	"allergies": {
+		"patientId1": {
+			"createAt": "2014-10-19T21:02:17.949Z",
+			"updatedAt": "2014-10-19T21:02:17.949Z",
+			"name": "Oxycodone",
+			"reactionsFull": [
+				"swollen hands"
+			],
+			"codes": [{
+					"code": "10831",
+					"codeSystem": "2.16.840.1.113883.6.88",
+					"codeSystemName": "RxNorm",
+					"name": "Bactrim"
+				},
+				{
+					"code": "N0000008034",
+					"codeSystem": "2.16.840.1.113883.3.26.1.5",
+					"codeSystemName": "NDF-RT",
+					"name": "Sulfa (Sulfonamide Antibiotics)"
+				}
+			]
+		}
+	}
+}
