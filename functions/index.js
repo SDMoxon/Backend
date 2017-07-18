@@ -3,12 +3,12 @@ const admin = require('firebase-admin');
 
 admin.initializeApp(functions.config().firebase);
 
-exports.addmessage = functions.https.onRequest((req,res) => {
+exports.addPatient = functions.https.onRequest((req,res) => {
     const original = req.query.text;
 
-    admin.database().ref('/messages').push({'name':original})
+    admin.database().ref('/patients').set({original: original})
     .then(snapshot => {
-        res.redirect(303, snapshot.ref)
+        res.redirect(303, snapshot.ref);
     });
 });
 
