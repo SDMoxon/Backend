@@ -10,7 +10,9 @@
 				"the 3rd"
 			],
 			"surname": "Milton",
-			"assignedDoctor": "doctorId1"
+			"assignedDoctor": "doctorId1",
+			"ward": "wardId1",
+			"wardName": "Acute Neurology Unit"
 		}
 	},
 	"doctors": {
