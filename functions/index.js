@@ -9,7 +9,7 @@ exports.addPatient = functions.https.onRequest((req,res) => {
 
     admin.database().ref('/patients').push(patient)
     .then(snapshot => {
-        res.redirect(303, snapshot.ref);
+        res.redirect(303, snapshot.val());
     });
 });
 
@@ -18,5 +18,22 @@ exports.addPatient = functions.https.onRequest((req,res) => {
 exports.getPatients = functions.https.onRequest((req,res) => {
     admin.database().ref('/patients').once('value', function (snapshot) {
         res.status(200).send(snapshot.val());
+    });
+});
+
+// get /wards/
+exports.getWards = functions.https.onRequest((req,res) => {
+    admin.database().ref('/wards').once('value', function (snapshot) {
+        res.status(200).send(snapshot.val());
+    });
+});
+
+exports.getPatientsByWard = functions.https.onRequest((req,res) => {
+    admin.database().ref('/patients').once('value', function (snapshot) {
+        res.status(200).send(
+            Object.keys(snapshot.val()).filter((key) => {
+                return snapshot.val()[key].wardName === 'Acute Neurology Unit';
+            })
+        );
     });
 });
