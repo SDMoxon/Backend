@@ -28,6 +28,14 @@ exports.getWards = functions.https.onRequest((req,res) => {
     });
 });
 
+exports.getPatientById = functions.https.onRequest((req,res) => {
+    const id = req.query.id;
+    console.log(id);
+    admin.database().ref(`/patients/${id}`).once('value', function (snapshot) {
+        res.status(200).send(snapshot.val());
+    });
+});
+
 exports.getPatientsByWard = functions.https.onRequest((req,res) => {
     admin.database().ref('/patients').once('value', function (snapshot) {
         res.status(200).send(
