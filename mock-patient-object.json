@@ -14,6 +14,21 @@
 			"occupation": "students",
 			"bloodType": "AB",
 			"NHS number": "898989878"
+		},
+		"patientID2": {
+			"createdAt": "2015-02-13T21:27:42.078Z",
+			"updateAt": "2015-02-13T21:27:42.078Z",
+			"email": "userid1@gmail.com",
+			"firstNames": [
+				"John",
+				"Clark",
+				"the 3rd"
+			],
+			"surname": "Milton",
+			"wardName": "Acute Neurology Unit",
+			"occupation": "students",
+			"bloodType": "AB",
+			"NHS number": "898989878"
 		}
 	},
 	"nextOfKin": {
@@ -21,14 +36,32 @@
 			"relationship": "friends",
 			"name": "Tim Ferris",
 			"contact": "075627367667"
+		},
+		"patientID2": {
+			"relationship": "friends",
+			"name": "Bon Jovi",
+			"contact": "075627367667"
 		}
 	},
 	"doctors": {
-		"doctorId1": {
+		"doctorID1": {
 			"createdAt": "2015-02-13T21:27:42.078Z",
 			"updateAt": "2015-02-13T21:27:42.078Z",
 			"email": "userid1@gmail.com",
-			"firsNames": [
+			"firstNames": [
+				"Obi",
+				"wan"
+			],
+			"surname": "Kenobi",
+			"patients": [
+				"patientID1"
+			]
+		},
+		"doctorID2": {
+			"createdAt": "2015-02-13T21:27:42.078Z",
+			"updateAt": "2015-02-13T21:27:42.078Z",
+			"email": "userid1@gmail.com",
+			"firstNames": [
 				"Obi",
 				"wan"
 			],
@@ -43,57 +76,62 @@
 			"createdAt": "2015-02-13T21:27:42.078Z",
 			"updateAt": "2015-02-13T21:27:42.078Z",
 			"email": "userid1@gmail.com",
-			"firsNames": [
+			"firstNames": [
 				"Leia"
 			],
 			"surname": "Morgana",
 			"wards": [
-				"wardId"
+				"Acute Neurology Unit"
+			]
+		},
+		"nurseID2": {
+			"createdAt": "2015-02-13T21:27:42.078Z",
+			"updateAt": "2015-02-13T21:27:42.078Z",
+			"email": "userid1@gmail.com",
+			"firstNames": [
+				"Leia"
+			],
+			"surname": "Morgana",
+			"wards": [
+				"Acute Banana Unit"
 			]
 		}
 	},
 	"wards": {
-		"wardId1": {
+		"wardID1": {
 			"createdAt": "2015-02-13T21:27:42.078Z",
 			"updateAt": "2015-02-13T21:27:42.078Z",
 			"name": "Acute Neurology Unit",
 			"building": "Humphrey Booth Building",
-			"floor": "0",
-			"doctors": [
-				"doctorId1",
-				"doctorId2"
-			],
-			"nurses": [
-				"nurseId1",
-				"nurseId2"
-			],
-			"patients": [
-				"patientId1",
-				"patientId2"
-			]
+			"floor": "0"
 		},
-		"wardId2": {
+		"wardID2": {
 			"createdAt": "2015-02-13T21:27:42.078Z",
 			"updateAt": "2015-02-13T21:27:42.078Z",
 			"name": "Acute Stroke Unit",
 			"building": "Humphrey Booth Building",
-			"Floor": "1",
-			"doctors": [
-				"doctorId3",
-				"doctorId4"
-			],
-			"nurses": [
-				"nurseId3",
-				"nurseId4"
-			],
-			"patients": [
-				"patientId3",
-				"patientId4"
-			]
+			"Floor": "1"
 		}
 	},
 	"demographics": {
-		"patientId1": {
+		"patientID1": {
+			"ethnicity": "british white",
+			"gender": "male",
+			"language": "ENG",
+			"race": "White/Caucasian",
+			"dob": "03-05-1985",
+			"alcohol": {
+				"use": "yes",
+				"units/week": "10",
+				"units/day": "1"
+			},
+			"smoking": {
+				"status": "Never smoker",
+				"units/week": "10",
+				"units/day": "2"
+			}
+		},
+		"patientID2": {
 			"ethnicity": "british white",
 			"gender": "male",
 			"language": "ENG",
@@ -108,7 +146,15 @@
 		}
 	},
 	"addresses": {
-		"patientId1": {
+		"patientID1": {
+			"city": "Vulcun City",
+			"country": "USA",
+			"state": "CA",
+			"addressLine1": "1 Milky way",
+			"addressLine2": "Salford",
+			"zip": "94025"
+		},
+		"patientID2": {
 			"city": "Vulcun City",
 			"country": "USA",
 			"state": "CA",
@@ -118,18 +164,49 @@
 		}
 	},
 	"currentMedicalStates": {
-		"patientId1": {
+		"patientID1": {
 			"contagionLevel": "amber",
 			"currentCondition": "pneumonia",
 			"causeOfAdmission": "strong cough",
-			"symptoms": [
-				"severe cough",
-				"high temperature"
-			]
+			"symptoms": "severe cough, high temperature"
+		},
+		"patientID2": {
+			"contagionLevel": "amber",
+			"currentCondition": "pneumonia",
+			"causeOfAdmission": "strong cough",
+			"symptoms": "high temperature"
 		}
 	},
 	"vitals": {
-		"patientId1": {
+		"patientID1": {
+			"2014-09-02T05:50:22": {
+				"author": "doctorId1",
+				"organization": {
+					"href": "/medical/organizations/53c050ac51c69003200aa998",
+					"id": "53c050ac51c69003200aa998",
+					"name": "Salford Royal"
+				},
+				"results": {
+					"SYSTOLIC_BLOOD_PRESSURE": 102,
+					"DIASTOLIC_BLOOD_PRESSURE": 70,
+					"HEART_RATE": 80
+				}
+			},
+			"2014-09-02T05:50:22655A": {
+				"author": "doctorId2",
+				"organization": {
+					"href": "/medical/organizations/53c050ac51c69003200aa998",
+					"id": "53c050ac51c69003200aa998",
+					"name": "Salford Royal"
+				},
+				"results": {
+					"SYSTOLIC_BLOOD_PRESSURE": 102,
+					"DIASTOLIC_BLOOD_PRESSURE": 70,
+					"HEART_RATE": 80
+				}
+			}
+		},
+		"patientID2": {
 			"2014-09-02T05:50:22": {
 				"author": "doctorId1",
 				"organization": {
@@ -159,22 +236,39 @@
 		}
 	},
 	"nutritionalRequierments": {
-		"patientId1": {
-			"intoleranceId1": {
-				"name": "lactose intolerance",
-				"reaction": "severe"
+		"patientID1": {
+			"lactose intolerance": {
+				"recommendation": "dont serve milk"
 			},
-			"intoleranceId2": {
-				"name": "protein intolerance",
-				"reaction": "mild"
+			"gluten intolerance": {
+				"recommendation": "serve gluten-free produce"
+			}
+		},
+		"patientID2": {
+			"lactose intolerance": {
+				"recommendation": "dont serve milk"
+			},
+			"gluten intolerance": {
+				"recommendation": "serve gluten-free produce"
 			}
 		}
 	},
 	"surgeries": null,
 	"prep": null,
 	"testsRan": {
-		"patientId1": {
-			"testId-datestamp": {
+		"patientID1": {
+			"2014-09-02T05:50:22655A": {
+				"name": "lung x-ray",
+				"linkToFiles": "link/file/lung-x-ray",
+				"organization": {
+					"href": "/medical/organizations/53c050ac51c69003200aa998",
+					"name": "Cleveland Clinic"
+				},
+				"notes": "looking good, nothing to see here"
+			}
+		},
+		"patientID2": {
+			"2014-09-02T05:50:22655dsadA": {
 				"name": "lung x-ray",
 				"linkToFiles": "link/file/lung-x-ray",
 				"organization": {
@@ -185,77 +279,113 @@
 			}
 		}
 	},
-	"additionalSymptoms": [],
+	"additionalSymptoms": {},
 	"currentTreatment": {},
 	"medication": {
-		"patientId1": {
-			"medicationId-dateStamp": {
-				"name": "loratadine (CLARITIN) 10 MG tablet",
+		"patientID1": {
+			"loratadine": {
+				"type": "(CLARITIN) 10 MG tablet",
 				"commonBrandName": "CLARITIN",
 				"dosageInfo": "10 MG tablet",
-				"instructions": "Take 1 tab by mouth as needed (allergies).",
-				"details": {
-					"dosage": {
-						"form": "tablet",
-						"value": 1
-					},
-					"frequency": {
-						"number": "1",
-						"unit": "as-needed"
-					},
-					"route": "enteral_oral",
-					"strength": {
-						"number": "10",
-						"unit": "mg"
-					}
-				},
-				"ndcCode": "0781-5077-01",
-				"organization": {
-					"href": "/medical/organizations/53c050ac51c69003200aa998",
-					"name": "Cleveland Clinic"
-				}
+				"instructions": "Take 1 tab by mouth as needed (allergies)."
 			}
 		}
 	},
 	"allergies": {
-		"patientId1": {
-			"createAt": "2014-10-19T21:02:17.949Z",
-			"updatedAt": "2014-10-19T21:02:17.949Z",
-			"name": "Oxycodone",
-			"reactionsFull": [
-				"swollen hands"
-			],
-			"codes": [{
-					"code": "10831",
-					"codeSystem": "2.16.840.1.113883.6.88",
-					"codeSystemName": "RxNorm",
-					"name": "Bactrim"
-				},
-				{
-					"code": "N0000008034",
-					"codeSystem": "2.16.840.1.113883.3.26.1.5",
-					"codeSystemName": "NDF-RT",
-					"name": "Sulfa (Sulfonamide Antibiotics)"
-				}
-			]
-		}
-	},
-	"medicalHistory": {
-		"patientHistory": {
-			"condition": "lazyitosis",
-			"date": "20-07-2017",
-			"treatement": {
-				"surgeries":{
-					"hospital": "Procrastination General",
-					"surgeon": "Shea Le Beuf"
+		"patientID1": {
+			"Oxycodone": {
+				"createAt": "2014-10-19T21:02:17.949Z",
+				"updatedAt": "2014-10-19T21:02:17.949Z",
+				"reactions": "swollen hands",
+				"codes": {
+					"10831": {
+						"codeSystem": "2.16.840.1.113883.6.88",
+						"codeSystemName": "RxNorm",
+						"name": "Bactrim"
+					},
+					"N0000008034": {
+						"codeSystem": "2.16.840.1.113883.3.26.1.5",
+						"codeSystemName": "NDF-RT",
+						"name": "Sulfa (Sulfonamide Antibiotics)"
+					}
 				}
 			}
 		},
-		"familyHistory": {
-			"relationship": "Parent",
-			"condition": "Acute Procrastinatory Neurosis",
-			"date": "18-07-2010"
+		"patientID2": {
+			"Penicillin": {
+				"createAt": "2014-10-19T21:02:17.949Z",
+				"updatedAt": "2014-10-19T21:02:17.949Z",
+				"reactions": "swollen hands, etc, etc, etc",
+				"codes": {
+					"10831": {
+						"codeSystem": "2.16.840.1.113883.6.88",
+						"codeSystemName": "RxNorm",
+						"name": "Bactrim"
+					},
+					"N0000008034": {
+						"codeSystem": "2.16.840.1.113883.3.26.1.5",
+						"codeSystemName": "NDF-RT",
+						"name": "Sulfa (Sulfonamide Antibiotics)"
+					}
+				}
+			}
 		}
 	},
-	"care-log": []
+	"medicalHistory": {
+		"patientID1": {
+			"patientHistory": {
+				"lazy-itosis": {
+					"date": "20-07-2017",
+					"treatement": {
+						"surgeries":{
+							"hospital": "Procrastination General",
+							"surgeon": "Shea Le Beuf"
+						}
+					},
+					"medication": {
+						"loratadine": {
+								"type": "(CLARITIN) 10 MG tablet",
+								"commonBrandName": "CLARITIN",
+								"dosageInfo": "10 MG tablet",
+								"instructions": "Take 1 tab by mouth as needed (allergies)."
+						}
+					}
+				}
+			},
+			"familyHistory": {
+				"John Doe": {
+					"relationship": "Parent",
+					"condition": "Acute Procrastinatory Neurosis",
+					"date": "18-07-2010"
+				}
+			}
+		},
+		"patientID2": {
+			"patientHistory": {
+				"lazy-itosis": {
+					"date": "20-07-2017",
+					"treatement": {
+						"surgeries":{
+							"hospital": "Procrastination General",
+							"surgeon": "Shea Le Beuf"
+						}
+					}
+				}
+			},
+			"familyHistory": {
+				"John Doe": {
+					"relationship": "Parent",
+					"condition": "Acute Procrastinatory Neurosis",
+					"date": "18-07-2010"
+				}
+			}
+		}
+	},
+	"care-log": {
+		"2014-09-02T05:50:22655dsadA": {
+			"author": "Dr. Who",
+			"witness": "Dr Who's Phone Booth",
+			"note": "This is a note"
+		}
+	}
 }
