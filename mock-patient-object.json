@@ -2,8 +2,6 @@
 	"patients": {
 		"patientID1": {
 			"personalDetails": {
-				"createdAt": "2015-02-13T21:27:42.078Z",
-				"updateAt": "2015-02-13T21:27:42.078Z",
 				"email": "userid1@gmail.com",
 				"firstNames": [
 					"John",
@@ -14,7 +12,7 @@
 				"wardName": "Acute Neurology Unit",
 				"occupation": "students",
 				"bloodType": "AB",
-				"NHS number": "898989878"
+				"NHSnumber": "898989878"
 			},
 			"nextOfKin": {
 				"relationship": "friends",
@@ -22,7 +20,7 @@
 				"contact": "075627367667"
 			},
 			"doctor": "Dr Who",
-			"demographics":{
+			"demographics": {
 				"ethnicity": "british white",
 				"gender": "male",
 				"language": "ENG",
@@ -30,14 +28,14 @@
 				"dob": "03-05-1985",
 				"alcohol": {
 					"use": "yes",
-					"units/week": "10",
-					"units/day": "1"
+					"unitsPerWeek": "10",
+					"unitsPerDay": "1"
 				},
 				"smoking": {
 					"status": "Never smoker",
-					"units/week": "10",
-					"units/day": "2"
-				}	
+					"unitsPerWeek": "10",
+					"unitsPerDay": "2"
+				}
 			},
 			"address": {
 				"city": "Vulcun City",
@@ -51,10 +49,10 @@
 				"contagionLevel": "amber",
 				"currentCondition": "pneumonia",
 				"causeOfAdmission": "strong cough",
-				"symptoms": "severe cough, high temperature"	
-			}, 
+				"symptoms": "severe cough, high temperature"
+			},
 			"vitals": {
-				"2014-09-02T05:50:22": {
+				"20140902T055022": {
 					"author": "doctorId1",
 					"organization": {
 						"href": "/medical/organizations/53c050ac51c69003200aa998",
@@ -67,111 +65,109 @@
 						"HEART_RATE": 80
 					}
 				},
-				"2014-09-02T05:50:22655A": {
-						"author": "doctorId2",
-						"organization": {
-							"href": "/medical/organizations/53c050ac51c69003200aa998",
-							"id": "53c050ac51c69003200aa998",
-							"name": "Salford Royal"
-						},
-						"results": {
-							"SYSTOLIC_BLOOD_PRESSURE": 102,
-							"DIASTOLIC_BLOOD_PRESSURE": 70,
-							"HEART_RATE": 80
-						}
-					}	
+				"20140902T055022655A": {
+					"author": "doctorId2",
+					"organization": {
+						"href": "/medical/organizations/53c050ac51c69003200aa998",
+						"id": "53c050ac51c69003200aa998",
+						"name": "Salford Royal"
+					},
+					"results": {
+						"SYSTOLIC_BLOOD_PRESSURE": 102,
+						"DIASTOLIC_BLOOD_PRESSURE": 70,
+						"HEART_RATE": 80
+					}
 				}
 			},
 			"nutritionalRequierments": {
-				"lactose intolerance": {
-					"recommendation": "dont serve milk"
-				},
-				"gluten intolerance": {
-					"recommendation": "serve gluten-free produce"
-				}
+			"lactose intolerance": {
+				"recommendation": "dont serve milk"
 			},
-			"surgeries": null,
-			"prep": null,
-			"testRan": {
-				"2014-09-02T05:50:22655A": {
-					"name": "lung x-ray",
-					"linkToFiles": "link/file/lung-x-ray",
-					"organization": {
-						"href": "/medical/organizations/53c050ac51c69003200aa998",
-						"name": "Cleveland Clinic"
+			"gluten intolerance": {
+				"recommendation": "serve gluten-free produce"
+			}
+		},
+		"surgeries": null,
+		"prep": null,
+		"testRan": {
+			"20140902T055022655A": {
+				"name": "lung x-ray",
+				"linkToFiles": "link/file/lung-x-ray",
+				"organization": {
+					"href": "/medical/organizations/53c050ac51c69003200aa998",
+					"name": "Cleveland Clinic"
+				},
+				"notes": "looking good, nothing to see here"
+			}
+		},
+		"additionalSymptoms": {},
+		"currentTreatment": {},
+		"medication": {
+			"loratadine": {
+				"type": "(CLARITIN) 10 MG tablet",
+				"commonBrandName": "CLARITIN",
+				"dosageInfo": "10 MG tablet",
+				"instructions": "Take 1 tab by mouth as needed (allergies)."
+			}
+		},
+		"allergies": {
+			"Oxycodone": {
+				"createAt": "2014-10-19T21:02:17.949Z",
+				"updatedAt": "2014-10-19T21:02:17.949Z",
+				"reactions": "swollen hands",
+				"codes": {
+					"10831": {
+						"codeSystem": "2.16.840.1.113883.6.88",
+						"codeSystemName": "RxNorm",
+						"name": "Bactrim"
 					},
-					"notes": "looking good, nothing to see here"
-				}
-			},
-			"additionalSymptoms": {},
-			"currentTreatment": {},
-			"medication": {
-					"loratadine": {
-					"type": "(CLARITIN) 10 MG tablet",
-					"commonBrandName": "CLARITIN",
-					"dosageInfo": "10 MG tablet",
-					"instructions": "Take 1 tab by mouth as needed (allergies)."
-				}
-			},
-			"allergies": {
-				"Oxycodone": {
-					"createAt": "2014-10-19T21:02:17.949Z",
-					"updatedAt": "2014-10-19T21:02:17.949Z",
-					"reactions": "swollen hands",
-					"codes": {
-						"10831": {
-							"codeSystem": "2.16.840.1.113883.6.88",
-							"codeSystemName": "RxNorm",
-							"name": "Bactrim"
-						},
-						"N0000008034": {
-							"codeSystem": "2.16.840.1.113883.3.26.1.5",
-							"codeSystemName": "NDF-RT",
-							"name": "Sulfa (Sulfonamide Antibiotics)"
-						}
+					"N0000008034": {
+						"codeSystem": "2.16.840.1.113883.3.26.1.5",
+						"codeSystemName": "NDF-RT",
+						"name": "Sulfa (Sulfonamide Antibiotics)"
 					}
-				}
-			},
-			"medicalHistory": {
-				"patientHistory": {
-					"lazy-itosis": {
-							"date": "20-07-2017",
-							"treatement": {
-								"surgeries":{
-									"hospital": "Procrastination General",
-									"surgeon": "Shea Le Beuf"
-								}
-							},
-							"medication": {
-								"loratadine": {
-										"type": "(CLARITIN) 10 MG tablet",
-										"commonBrandName": "CLARITIN",
-										"dosageInfo": "10 MG tablet",
-										"instructions": "Take 1 tab by mouth as needed (allergies)."
-								}
-							}
-						}
-				},
-				"familyHistory": {
-					"John Doe": {
-						"relationship": "Parent",
-						"condition": "Acute Procrastinatory Neurosis",
-						"date": "18-07-2010"
-					}
-				}
-			},
-			"care-log": {
-				"2014-09-02T05:50:22655dsadA": {
-					"author": "Dr. Who",
-					"witness": "Dr Who's Phone Booth",
-					"note": "This is a note"
 				}
 			}
+		},
+		"medicalHistory": {
+			"patientHistory": {
+				"lazyitosis": {
+					"date": "20-07-2017",
+					"treatement": {
+						"surgeries": {
+							"hospital": "Procrastination General",
+							"surgeon": "Shea Le Beuf"
+						}
+					},
+					"medication": {
+						"loratadine": {
+							"type": "(CLARITIN) 10 MG tablet",
+							"commonBrandName": "CLARITIN",
+							"dosageInfo": "10 MG tablet",
+							"instructions": "Take 1 tab by mouth as needed (allergies)."
+						}
+					}
+				}
+			},
+			"familyHistory": {
+				"John Doe": {
+					"relationship": "Parent",
+					"condition": "Acute Procrastinatory Neurosis",
+					"date": "18-07-2010"
+				}
+			}
+		},
+		"careLog": {
+			"20140902T055022655dsadA": {
+				"author": "Dr. Who",
+				"witness": "Dr Who's Phone Booth",
+				"note": "This is a note"
+			}
+		}
+		}
 	},
 	"doctors": {
 		"doctorID1": {
-			"createdAt": "2015-02-13T21:27:42.078Z",
-			"updateAt": "2015-02-13T21:27:42.078Z",
 			"email": "userid1@gmail.com",
 			"firstNames": [
 				"Obi",
@@ -183,8 +179,6 @@
 			]
 		},
 		"doctorID2": {
-			"createdAt": "2015-02-13T21:27:42.078Z",
-			"updateAt": "2015-02-13T21:27:42.078Z",
 			"email": "userid1@gmail.com",
 			"firstNames": [
 				"Obi",
@@ -195,8 +189,6 @@
 	},
 	"nurses": {
 		"nurseID1": {
-			"createdAt": "2015-02-13T21:27:42.078Z",
-			"updateAt": "2015-02-13T21:27:42.078Z",
 			"email": "userid1@gmail.com",
 			"firstNames": [
 				"Leia"
@@ -207,8 +199,6 @@
 			]
 		},
 		"nurseID2": {
-			"createdAt": "2015-02-13T21:27:42.078Z",
-			"updateAt": "2015-02-13T21:27:42.078Z",
 			"email": "userid1@gmail.com",
 			"firstNames": [
 				"Leia"
@@ -221,20 +211,15 @@
 	},
 	"wards": {
 		"wardID1": {
-			"createdAt": "2015-02-13T21:27:42.078Z",
-			"updateAt": "2015-02-13T21:27:42.078Z",
 			"name": "Acute Neurology Unit",
 			"building": "Humphrey Booth Building",
 			"floor": "0"
-	
+
 		},
 		"wardID2": {
-			"createdAt": "2015-02-13T21:27:42.078Z",
-			"updateAt": "2015-02-13T21:27:42.078Z",
 			"name": "Acute Stroke Unit",
 			"building": "Humphrey Booth Building",
 			"Floor": "1"
 		}
-	},
-	
+	}
 }
