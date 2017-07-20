@@ -83,3 +83,13 @@ exports.putPatientDetails = functions.https.onRequest((req, res) => {
     
     admin.database().ref(`/patients/${patientId}/personalDetails`).set(dataObject);
 });
+
+// POST /careLog
+exports.postCareLog = functions.https.onRequest((req, res) => {
+    bodyParser.json();
+    const patientId = req.query.id;
+    const newLog = req.body;
+    let timestamp = new Date();
+
+    admin.database().ref(`/patients/${patientId}/careLog`).child(`${timestamp}`).set(newLog);
+});
