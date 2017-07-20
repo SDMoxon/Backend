@@ -9,7 +9,7 @@ exports.addPatient = functions.https.onRequest((req, res) => {
     bodyParser.json();
     const patient = req.body;
 
-    admin.database().ref('/patients').push(patient)
+    admin.database().ref('/patients').push(patient);
 });
 
 // GET /patients/
@@ -27,6 +27,7 @@ exports.getWards = functions.https.onRequest((req, res) => {
     });
 });
 
+
 exports.getPatientById = functions.https.onRequest((req, res) => {
     const id = req.query.id;
     console.log(id);
@@ -39,9 +40,14 @@ exports.getPatientsByWard = functions.https.onRequest((req, res) => {
     const wardQuery = req.query.ward;
     let filterKeys;
     admin.database().ref('/patients').once('value', function (snapshot) {
+
         filterKeys = Object.keys(snapshot.val()).reduce((acc, key) => {
             if (snapshot.val()[key].wardName === wardQuery) {
-                acc[key] = snapshot.val()[key];
+                acc[key] = {
+                    'name': snapshot.val()[key].personalDetails.firstNames[0] + ' ' + snapshot.val()[key].personalDetails.surname,
+                    'NHS number': snapshot.val()[key].personalDetails.NHSnumber,
+                    'condition' : snapshot.val()[key].currentMedicalState.currentCondition
+                };
                 return acc;
             }
             return acc;
@@ -56,5 +62,5 @@ exports.putVitals = functions.https.onRequest((req, res) => {
     const dataObject = req.body;
     const timestamp = new Date();
 
-    admin.database().ref(`/vitals/${patientId}`).child(`${timestamp}`).set(dataObject);
+    admin.database().ref(`/patients/${patientId}/vitals`).child(`${timestamp}`).set(dataObject);
 });
