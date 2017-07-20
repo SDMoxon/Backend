@@ -130,32 +130,30 @@
 	},
 	"vitals": {
 		"patientId1": {
-			"readingsTimeline": {
-				"2014-09-02T05:50:22": {
-					"author": "doctorId1",
-					"organization": {
-						"href": "/medical/organizations/53c050ac51c69003200aa998",
-						"id": "53c050ac51c69003200aa998",
-						"name": "Salford Royal"
-					},
-					"results": {
-						"SYSTOLIC_BLOOD_PRESSURE": 102,
-						"DIASTOLIC_BLOOD_PRESSURE": 70,
-						"HEART_RATE": 80
-					}
+			"2014-09-02T05:50:22": {
+				"author": "doctorId1",
+				"organization": {
+					"href": "/medical/organizations/53c050ac51c69003200aa998",
+					"id": "53c050ac51c69003200aa998",
+					"name": "Salford Royal"
 				},
-				"2014-09-02T05:50:22655A": {
-					"author": "doctorId2",
-					"organization": {
-						"href": "/medical/organizations/53c050ac51c69003200aa998",
-						"id": "53c050ac51c69003200aa998",
-						"name": "Salford Royal"
-					},
-					"results": {
-						"SYSTOLIC_BLOOD_PRESSURE": 102,
-						"DIASTOLIC_BLOOD_PRESSURE": 70,
-						"HEART_RATE": 80
-					}
+				"results": {
+					"SYSTOLIC_BLOOD_PRESSURE": 102,
+					"DIASTOLIC_BLOOD_PRESSURE": 70,
+					"HEART_RATE": 80
+				}
+			},
+			"2014-09-02T05:50:22655A": {
+				"author": "doctorId2",
+				"organization": {
+					"href": "/medical/organizations/53c050ac51c69003200aa998",
+					"id": "53c050ac51c69003200aa998",
+					"name": "Salford Royal"
+				},
+				"results": {
+					"SYSTOLIC_BLOOD_PRESSURE": 102,
+					"DIASTOLIC_BLOOD_PRESSURE": 70,
+					"HEART_RATE": 80
 				}
 			}
 		}
