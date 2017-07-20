@@ -10,41 +10,39 @@
 				],
 				"surname": "Milton",
 				"wardName": "Acute Neurology Unit",
-				"occupation": "students",
+				"occupation": "student",
 				"bloodType": "AB",
-				"NHSnumber": "898989878"
-			},
-			"nextOfKin": {
-				"relationship": "friends",
-				"name": "Tim Ferris",
-				"contact": "075627367667"
-			},
-			"doctor": "Dr Who",
-			"demographics": {
-				"ethnicity": "british white",
-				"gender": "male",
-				"language": "ENG",
-				"race": "White/Caucasian",
-				"dob": "03-05-1985",
-				"alcohol": {
-					"use": "yes",
-					"unitsPerWeek": "10",
-					"unitsPerDay": "1"
+				"NHSnumber": "898989878",
+				"address": "15 Hazelnute Ave, Manchester, M12 345",
+				"nextOfKin": {
+					"relationship": "friends",
+					"name": "Tim Ferris",
+					"contact": "075627367667"
 				},
-				"smoking": {
-					"status": "Never smoker",
-					"unitsPerWeek": "10",
-					"unitsPerDay": "2"
+				"GP": {
+					"name":"Tim Ferrisse",
+					"surgery": "Da Surgery",
+					"address": "Kenwood Ave"
+				},
+				"demographics": {
+					"ethnicity": "british white",
+					"gender": "male",
+					"language": "ENG",
+					"race": "White/Caucasian",
+					"dob": "03-05-1985",
+					"alcohol": {
+						"use": "yes",
+						"unitsPerWeek": "10",
+						"unitsPerDay": "1"
+					},
+					"smoking": {
+						"status": "Never smoker",
+						"unitsPerWeek": "10",
+						"unitsPerDay": "2"
+					}
 				}
 			},
-			"address": {
-				"city": "Vulcun City",
-				"country": "USA",
-				"state": "CA",
-				"addressLine1": "1 Milky way",
-				"addressLine2": "Salford",
-				"zip": "94025"
-			},
+			"currentDoctor": "Dr Who",
 			"currentMedicalState": {
 				"contagionLevel": "amber",
 				"currentCondition": "pneumonia",
