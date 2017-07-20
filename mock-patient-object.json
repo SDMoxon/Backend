@@ -1,18 +1,26 @@
 {
-	"patients": {
+	"patientDetails": {
 		"patientID1": {
 			"createdAt": "2015-02-13T21:27:42.078Z",
 			"updateAt": "2015-02-13T21:27:42.078Z",
 			"email": "userid1@gmail.com",
-			"firsNames": [
+			"firstNames": [
 				"John",
 				"Clark",
 				"the 3rd"
 			],
 			"surname": "Milton",
-			"assignedDoctor": "doctorId1",
-			"ward": "wardId1",
-			"wardName": "Acute Neurology Unit"
+			"wardName": "Acute Neurology Unit",
+			"occupation": "students",
+			"bloodType": "AB",
+			"NHS number": "898989878"
+		}
+	},
+	"nextOfKin": {
+		"patientID1": {
+			"relationship": "friends",
+			"name": "Tim Ferris",
+			"contact": "075627367667"
 		}
 	},
 	"doctors": {
@@ -113,9 +121,9 @@
 		"patientId1": {
 			"contagionLevel": "amber",
 			"currentCondition": "pneumonia",
-			"causeOfAdmission": "strong caugh",
+			"causeOfAdmission": "strong cough",
 			"symptoms": [
-				"severe caugh",
+				"severe cough",
 				"high temperature"
 			]
 		}
@@ -180,7 +188,6 @@
 		}
 	},
 	"additionalSymptoms": [],
-	"medicalHistory": {},
 	"currentTreatment": {},
 	"medication": {
 		"patientId1": {
@@ -234,5 +241,23 @@
 				}
 			]
 		}
-	}
+	},
+	"medicalHistory": {
+		"patientHistory": {
+			"condition": "lazyitosis",
+			"date": "20-07-2017",
+			"treatement": {
+				"surgeries":{
+					"hospital": "Procrastination General",
+					"surgeon": "Shea Le Beuf"
+				}
+			}
+		},
+		"familyHistory": {
+			"relationship": "Parent",
+			"condition": "Acute Procrastinatory Neurosis",
+			"date": "18-07-2010"
+		}
+	},
+	"care-log": []
 }
