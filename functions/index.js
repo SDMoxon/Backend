@@ -87,7 +87,10 @@ exports.putPatientDetails = functions.https.onRequest((req, res) => {
     const patientId = req.query.id;
     const dataObject = req.body;
 
-    admin.database().ref(`/patients/${patientId}/personalDetails`).set(dataObject);
+    admin.database().ref(`/patients/${patientId}/personalDetails`).set(dataObject)
+        .then(
+            res.end()
+        );
 });
 
 // POST /careLog
@@ -103,7 +106,6 @@ exports.postCareLog = functions.https.onRequest((req, res) => {
 });
 
 // GET patientsById
-
 exports.patientByName = functions.https.onRequest((req, res) => {
     const patientName = req.query.name;
     const regex = new RegExp(patientName, 'gi');
