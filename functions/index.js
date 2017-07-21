@@ -10,6 +10,8 @@ exports.addPatient = functions.https.onRequest((req, res) => {
     const patient = req.body;
 
     admin.database().ref('/patients').push(patient);
+
+    res.status(200).send(req.body);
 });
 
 // GET /patients
