@@ -1,7 +1,7 @@
 const request = require('axios');
 const faker = require('faker');
 
-for (var i = 0; i < 10; i++) {
+for (var i = 0; i < 19; i++) {
     const obj = {
         "personalDetails": {
             "email": faker.internet.email(),
@@ -14,7 +14,7 @@ for (var i = 0; i < 10; i++) {
             "occupation": faker.name.jobTitle(),
             "bloodType": "AB",
             "NHSnumber": Math.floor(Math.random() * 1000000000),
-            "address": `${faker.random.number()}, ${faker.address.streetName}, ${faker.address.county} ${faker.address.zipCode()}`,
+            "address": `${faker.random.number()}, ${faker.address.streetName()}, ${faker.address.county()} ${faker.address.zipCode()}`,
             "nextOfKin": {
                 "relationship": "friends",
                 "name": `${faker.name.firstName()} ${faker.name.lastName()}`,
@@ -23,7 +23,7 @@ for (var i = 0; i < 10; i++) {
             "GP": {
                 "name": `${faker.name.firstName()} ${faker.name.lastName()}`,
                 "surgery": faker.company.companyName(),
-                "address": `${faker.random.number()}, ${faker.address.streetName}, ${faker.address.county}`
+                "address": `${faker.random.number()}, ${faker.address.streetName()}, ${faker.address.county()}`
             },
             "demographics": {
                 "ethnicity": "british white",
@@ -86,31 +86,25 @@ for (var i = 0; i < 10; i++) {
                 "recommendation": "serve gluten-free produce"
             }
         },
-        "surgeries": null,
-        "prep": null,
-        "testRan": {
+        "testResult": {
             "bloods": {
                 "20140902T055022655A": {
-                    "white Cell Count": Math.floor(Math.random * 11),
-                    "heamoglobin": Math.floor(Math.random * 165),
-                    "platelets": Math.floor(Math.random * 450),
-                    "vitimin b12": Math.floor(Math.random * 900)
+                    "white Cell Count": Math.floor(Math.random() * 11),
+                    "heamoglobin": Math.floor(Math.random() * 165),
+                    "platelets": Math.floor(Math.random() * 450),
+                    "vitimin b12": Math.floor(Math.random() * 900)
                 }
 
             },
             "urine": {
                 "20140902T055022655A": {
-                    "nitrate": Math.floor(Math.random * 11),
-                    "protein": Math.floor(Math.random * 165),
-                    "pH": Math.floor(Math.random * 450),
-                    "glucose": Math.floor(Math.random * 900)
+                    "nitrate": Math.floor(Math.random() * 11),
+                    "protein": Math.floor(Math.random() * 165),
+                    "pH": Math.floor(Math.random() * 450),
+                    "glucose": Math.floor(Math.random() * 900)
                 }
             }
-
-
         },
-        "additionalSymptoms": {},
-        "currentTreatment": {},
         "medication": {
             "loratadine": {
                 "type": "(CLARITIN) 10 MG tablet",
