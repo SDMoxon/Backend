@@ -1,7 +1,7 @@
 const request = require('axios');
 const faker = require('faker');
 
-for (var i = 0; i < 19; i++) {
+for (var i = 0; i < 14; i++) {
     const obj = {
         "personalDetails": {
             "email": faker.internet.email(),
