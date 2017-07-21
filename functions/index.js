@@ -9,7 +9,10 @@ exports.addPatient = functions.https.onRequest((req, res) => {
     bodyParser.json();
     const patient = req.body;
 
-    admin.database().ref('/patients').push(patient);
+    admin.database().ref('/patients').push(patient)
+        .then(
+            res.end()
+        );
 });
 
 // GET /patients
@@ -91,7 +94,10 @@ exports.postCareLog = functions.https.onRequest((req, res) => {
     const newLog = req.body;
     let timestamp = new Date();
 
-    admin.database().ref(`/patients/${patientId}/careLog`).child(`${timestamp}`).set(newLog);
+    admin.database().ref(`/patients/${patientId}/careLog`).child(`${timestamp}`).set(newLog)
+        .then(
+            res.end()
+        );
 });
 
 // GET patientsById
