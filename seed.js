@@ -30,16 +30,16 @@ for (var i = 0; i < 10; i++) {
                 "gender": "male",
                 "language": "ENG",
                 "race": "White/Caucasian",
-                "dob": "03-05-1985",
+                "dob": faker.date.past(),
                 "alcohol": {
                     "use": "yes",
-                    "unitsPerWeek": "10",
-                    "unitsPerDay": "1"
+                    "unitsPerWeek": faker.random.number(),
+                    "unitsPerDay": faker.random.number()
                 },
                 "smoking": {
                     "status": "Never smoker",
-                    "unitsPerWeek": "10",
-                    "unitsPerDay": "2"
+                    "unitsPerWeek": faker.random.number(),
+                    "unitsPerDay": faker.random.number()
                 }
             }
         },
