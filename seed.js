@@ -10,7 +10,6 @@ for (var i = 0; i < 19; i++) {
                 faker.name.firstName()
             ],
             "surname": faker.name.lastName(),
-            "wardName": "Acute Neurology Unit",
             "occupation": faker.name.jobTitle(),
             "bloodType": "AB",
             "NHSnumber": Math.floor(Math.random() * 1000000000),
@@ -160,6 +159,7 @@ for (var i = 0; i < 19; i++) {
                 }
             }
         },
+        "wardName": "Acute Neurology Unit",
         "careLog": {
             "20140902T055022655dsadA": {
                 "author": "Dr. Who",
