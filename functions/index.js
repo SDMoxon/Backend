@@ -9,7 +9,10 @@ exports.addPatient = functions.https.onRequest((req, res) => {
     bodyParser.json();
     const patient = req.body;
 
-    admin.database().ref('/patients').push(patient);
+    admin.database().ref('/patients').push(patient)
+        .then(
+            res.end()
+        );
 });
 
 // GET /patients
@@ -64,7 +67,10 @@ exports.putVitals = functions.https.onRequest((req, res) => {
     const dataObject = req.body;
     const timestamp = new Date();
 
-    admin.database().ref(`/patients/${patientId}/vitals`).child(`${timestamp}`).set(dataObject);
+    admin.database().ref(`/patients/${patientId}/vitals`).child(`${timestamp}`).set(dataObject)
+        .then(
+            res.end()
+        );
 });
 
 // PUT /medication
@@ -73,7 +79,10 @@ exports.putMedication = functions.https.onRequest((req, res) => {
     const medicationId = req.query.medication;
     const dataObject = req.body;
 
-    admin.database().ref(`/patients/${patientId}/medication`).child(`${medicationId}`).set(dataObject);
+    admin.database().ref(`/patients/${patientId}/medication`).child(`${medicationId}`).set(dataObject)
+        .then(
+            res.end()
+        );
 });
 
 // PUT /patientDetails
@@ -81,7 +90,10 @@ exports.putPatientDetails = functions.https.onRequest((req, res) => {
     const patientId = req.query.id;
     const dataObject = req.body;
 
-    admin.database().ref(`/patients/${patientId}/personalDetails`).set(dataObject);
+    admin.database().ref(`/patients/${patientId}/personalDetails`).set(dataObject)
+        .then(
+            res.end()
+        );
 });
 
 // POST /careLog
@@ -91,11 +103,13 @@ exports.postCareLog = functions.https.onRequest((req, res) => {
     const newLog = req.body;
     let timestamp = new Date();
 
-    admin.database().ref(`/patients/${patientId}/careLog`).child(`${timestamp}`).set(newLog);
+    admin.database().ref(`/patients/${patientId}/careLog`).child(`${timestamp}`).set(newLog)
+        .then(
+            res.end()
+        );
 });
 
 // GET patientsById
-
 exports.patientByName = functions.https.onRequest((req, res) => {
     const patientName = req.query.name;
     const regex = new RegExp(patientName, 'gi');
