@@ -14,7 +14,7 @@ for (var i = 0; i < 10; i++) {
             "occupation": faker.name.jobTitle(),
             "bloodType": "AB",
             "NHSnumber": Math.random() * 1000000000,
-            "address": "15 Hazelnute Ave, Manchester, M12 345",
+            "address": `${faker.random.number()}, ${faker.address.streetName}, ${faker.address.county} ${faker.address.zipCode()}`,
             "nextOfKin": {
                 "relationship": "friends",
                 "name": `${faker.name.firstName()} ${faker.name.lastName()}`,
