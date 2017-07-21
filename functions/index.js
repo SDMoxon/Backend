@@ -22,7 +22,7 @@ exports.getPatients = functions.https.onRequest((req, res) => {
 
 // GET /wards
 exports.getWards = functions.https.onRequest((req, res) => {
-    admin.database().ref('/wards').once('value', function (snapshot) {
+    admin.database().ref('/wards').once('value', (snapshot) => {
         res.status(200).send(snapshot.val());
     });
 });
@@ -40,14 +40,14 @@ exports.getPatientById = functions.https.onRequest((req, res) => {
 exports.getPatientsByWard = functions.https.onRequest((req, res) => {
     const wardQuery = req.query.ward;
     let filterKeys;
-    admin.database().ref('/patients').once('value', function (snapshot) {
+    admin.database().ref('/patients').once('value', (snapshot) => {
 
         filterKeys = Object.keys(snapshot.val()).reduce((acc, key) => {
             if (snapshot.val()[key].wardName === wardQuery) {
                 acc[key] = {
                     'name': snapshot.val()[key].personalDetails.firstNames[0] + ' ' + snapshot.val()[key].personalDetails.surname,
                     'NHS number': snapshot.val()[key].personalDetails.NHSnumber,
-                    'condition' : snapshot.val()[key].currentMedicalState.currentCondition
+                    'condition': snapshot.val()[key].currentMedicalState.currentCondition
                 };
                 return acc;
             }
@@ -80,7 +80,7 @@ exports.putMedication = functions.https.onRequest((req, res) => {
 exports.putPatientDetails = functions.https.onRequest((req, res) => {
     const patientId = req.query.id;
     const dataObject = req.body;
-    
+
     admin.database().ref(`/patients/${patientId}/personalDetails`).set(dataObject);
 });
 
@@ -92,4 +92,22 @@ exports.postCareLog = functions.https.onRequest((req, res) => {
     let timestamp = new Date();
 
     admin.database().ref(`/patients/${patientId}/careLog`).child(`${timestamp}`).set(newLog);
+});
+
+// GET patientsById
+
+exports.patientByName = functions.https.onRequest((req, res) => {
+    const patientName = req.query.name;
+    const regex = new RegExp(patientName, 'gi');
+    let filterKeys;
+    admin.database().ref('/patients').once('value', (snapshot) => {
+        filterKeys = Object.keys(snapshot.val()).reduce((acc, key) => {
+            if (regex.test(snapshot.val()[key].personalDetails.firstNames.join()) || regex.test(snapshot.val()[key].personalDetails.surname)) {
+                acc[key] = snapshot.val()[key];
+                return acc;
+            }
+            return acc;
+        }, {});
+        res.status(200).send(filterKeys);
+    });
 });
