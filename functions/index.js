@@ -98,6 +98,8 @@ exports.postCareLog = functions.https.onRequest((req, res) => {
     let timestamp = new Date();
 
     admin.database().ref(`/patients/${patientId}/careLog`).child(`${timestamp}`).set(newLog);
+
+    res.status(200).send(req.body);
 });
 
 // GET patientsById
