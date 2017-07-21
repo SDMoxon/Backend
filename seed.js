@@ -1,5 +1,5 @@
-const request = require ('axios');
-const faker =require ('faker');
+const request = require('axios');
+const faker = require('faker');
 
 for (var i = 0; i < 10; i++) {
     const obj = {
@@ -13,7 +13,7 @@ for (var i = 0; i < 10; i++) {
             "wardName": "Acute Neurology Unit",
             "occupation": faker.name.jobTitle(),
             "bloodType": "AB",
-            "NHSnumber": Math.random() * 1000000000,
+            "NHSnumber": Math.floor(Math.random() * 1000000000),
             "address": `${faker.random.number()}, ${faker.address.streetName}, ${faker.address.county} ${faker.address.zipCode()}`,
             "nextOfKin": {
                 "relationship": "friends",
@@ -89,15 +89,25 @@ for (var i = 0; i < 10; i++) {
         "surgeries": null,
         "prep": null,
         "testRan": {
-            "20140902T055022655A": {
-                "name": "lung x-ray",
-                "linkToFiles": "link/file/lung-x-ray",
-                "organization": {
-                    "href": "/medical/organizations/53c050ac51c69003200aa998",
-                    "name": "Cleveland Clinic"
-                },
-                "notes": "looking good, nothing to see here"
+            "bloods": {
+                "20140902T055022655A": {
+                    "white Cell Count": Math.floor(Math.random * 11),
+                    "heamoglobin": Math.floor(Math.random * 165),
+                    "platelets": Math.floor(Math.random * 450),
+                    "vitimin b12": Math.floor(Math.random * 900)
+                }
+
+            },
+            "urine": {
+                "20140902T055022655A": {
+                    "nitrate": Math.floor(Math.random * 11),
+                    "protein": Math.floor(Math.random * 165),
+                    "pH": Math.floor(Math.random * 450),
+                    "glucose": Math.floor(Math.random * 900)
+                }
             }
+
+
         },
         "additionalSymptoms": {},
         "currentTreatment": {},
