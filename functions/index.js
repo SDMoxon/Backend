@@ -67,6 +67,8 @@ exports.putVitals = functions.https.onRequest((req, res) => {
     const timestamp = new Date();
 
     admin.database().ref(`/patients/${patientId}/vitals`).child(`${timestamp}`).set(dataObject);
+
+    res.status(200).send(req.body);
 });
 
 // PUT /medication
