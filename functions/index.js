@@ -78,6 +78,8 @@ exports.putMedication = functions.https.onRequest((req, res) => {
     const dataObject = req.body;
 
     admin.database().ref(`/patients/${patientId}/medication`).child(`${medicationId}`).set(dataObject);
+
+    res.status(200).send(req.body);
 });
 
 // PUT /patientDetails
