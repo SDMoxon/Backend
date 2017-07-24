@@ -1,6 +1,7 @@
 const functions = require('firebase-functions');
 const admin = require('firebase-admin');
 const bodyParser = require('body-parser');
+// const cors = require('cors');
 
 admin.initializeApp(functions.config().firebase);
 
@@ -8,16 +9,18 @@ admin.initializeApp(functions.config().firebase);
 exports.addPatient = functions.https.onRequest((req, res) => {
     bodyParser.json();
     const patient = req.body;
+    giveCors(res);
 
     admin.database().ref('/patients').push(patient)
         .then(
-            res.end()
+        res.end()
         );
 });
 
 // GET /patients
 
 exports.getPatients = functions.https.onRequest((req, res) => {
+    giveCors(res);
     admin.database().ref('/patients').once('value', function (snapshot) {
         res.status(200).send(snapshot.val());
     });
@@ -25,6 +28,7 @@ exports.getPatients = functions.https.onRequest((req, res) => {
 
 // GET /wards
 exports.getWards = functions.https.onRequest((req, res) => {
+    giveCors(res);
     admin.database().ref('/wards').once('value', (snapshot) => {
         res.status(200).send(snapshot.val());
     });
@@ -33,7 +37,8 @@ exports.getWards = functions.https.onRequest((req, res) => {
 // GET /patients/:id
 exports.getPatientById = functions.https.onRequest((req, res) => {
     const id = req.query.id;
-    console.log(id);
+    giveCors(res);
+    
     admin.database().ref(`/patients/${id}`).once('value', function (snapshot) {
         res.status(200).send(snapshot.val());
     });
@@ -43,8 +48,9 @@ exports.getPatientById = functions.https.onRequest((req, res) => {
 exports.getPatientsByWard = functions.https.onRequest((req, res) => {
     const wardQuery = req.query.ward;
     let filterKeys;
+    giveCors(res);
+    
     admin.database().ref('/patients').once('value', (snapshot) => {
-
         filterKeys = Object.keys(snapshot.val()).reduce((acc, key) => {
             if (snapshot.val()[key].wardName === wardQuery) {
                 acc[key] = {
@@ -57,7 +63,6 @@ exports.getPatientsByWard = functions.https.onRequest((req, res) => {
             return acc;
         }, {});
         res.status(200).send(filterKeys);
-
     });
 });
 
@@ -66,10 +71,11 @@ exports.putVitals = functions.https.onRequest((req, res) => {
     const patientId = req.query.id;
     const dataObject = req.body;
     const timestamp = new Date();
+    giveCors(res);
 
     admin.database().ref(`/patients/${patientId}/vitals`).child(`${timestamp}`).set(dataObject)
         .then(
-            res.end()
+        res.end()
         );
 });
 
@@ -78,10 +84,11 @@ exports.putMedication = functions.https.onRequest((req, res) => {
     const patientId = req.query.id;
     const medicationId = req.query.medication;
     const dataObject = req.body;
+    giveCors(res);
 
     admin.database().ref(`/patients/${patientId}/medication`).child(`${medicationId}`).set(dataObject)
         .then(
-            res.end()
+        res.end()
         );
 });
 
@@ -89,10 +96,11 @@ exports.putMedication = functions.https.onRequest((req, res) => {
 exports.putPatientDetails = functions.https.onRequest((req, res) => {
     const patientId = req.query.id;
     const dataObject = req.body;
+    giveCors(res);
 
     admin.database().ref(`/patients/${patientId}/personalDetails`).set(dataObject)
         .then(
-            res.end()
+        res.end()
         );
 });
 
@@ -102,10 +110,11 @@ exports.postCareLog = functions.https.onRequest((req, res) => {
     const patientId = req.query.id;
     const newLog = req.body;
     let timestamp = new Date();
+    giveCors(res);
 
     admin.database().ref(`/patients/${patientId}/careLog`).child(`${timestamp}`).set(newLog)
         .then(
-            res.end()
+        res.end()
         );
 });
 
@@ -114,6 +123,8 @@ exports.patientByName = functions.https.onRequest((req, res) => {
     const patientName = req.query.name;
     const regex = new RegExp(patientName, 'gi');
     let filterKeys;
+    giveCors(res);
+
     admin.database().ref('/patients').once('value', (snapshot) => {
         filterKeys = Object.keys(snapshot.val()).reduce((acc, key) => {
             if (regex.test(snapshot.val()[key].personalDetails.firstNames.join()) || regex.test(snapshot.val()[key].personalDetails.surname)) {
@@ -125,3 +136,9 @@ exports.patientByName = functions.https.onRequest((req, res) => {
         res.status(200).send(filterKeys);
     });
 });
+
+// CORS
+const giveCors = function (res) {
+    res.set('Access-Control-Allow-Origin', "*")
+    res.set('Access-Control-Allow-Methods', 'GET, POST');
+};
