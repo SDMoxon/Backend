@@ -11,10 +11,9 @@ exports.addPatient = functions.https.onRequest((req, res) => {
     const patient = req.body;
     giveCors(res);
 
-    admin.database().ref('/patients').push(patient)
-        .then(
-        res.end()
-        );
+    admin.database().ref('/patients').push(patient);
+
+    res.status(200).send(req.body);
 });
 
 // GET /patients
@@ -73,10 +72,16 @@ exports.putVitals = functions.https.onRequest((req, res) => {
     const timestamp = new Date();
     giveCors(res);
 
+<<<<<<< HEAD
     admin.database().ref(`/patients/${patientId}/vitals`).child(`${timestamp}`).set(dataObject)
         .then(
         res.end()
         );
+=======
+    admin.database().ref(`/patients/${patientId}/vitals`).child(`${timestamp}`).set(dataObject);
+
+    res.status(200).send(req.body);
+>>>>>>> 49c90bf5595869006047af1e8025104aa5e73208
 });
 
 // PUT /medication
@@ -86,10 +91,16 @@ exports.putMedication = functions.https.onRequest((req, res) => {
     const dataObject = req.body;
     giveCors(res);
 
+<<<<<<< HEAD
     admin.database().ref(`/patients/${patientId}/medication`).child(`${medicationId}`).set(dataObject)
         .then(
         res.end()
         );
+=======
+    admin.database().ref(`/patients/${patientId}/medication`).child(`${medicationId}`).set(dataObject);
+
+    res.status(200).send(req.body);
+>>>>>>> 49c90bf5595869006047af1e8025104aa5e73208
 });
 
 // PUT /patientDetails
@@ -112,10 +123,16 @@ exports.postCareLog = functions.https.onRequest((req, res) => {
     let timestamp = new Date();
     giveCors(res);
 
+<<<<<<< HEAD
     admin.database().ref(`/patients/${patientId}/careLog`).child(`${timestamp}`).set(newLog)
         .then(
         res.end()
         );
+=======
+    admin.database().ref(`/patients/${patientId}/careLog`).child(`${timestamp}`).set(newLog);
+
+    res.status(200).send(req.body);
+>>>>>>> 49c90bf5595869006047af1e8025104aa5e73208
 });
 
 // GET patientsById

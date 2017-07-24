@@ -17,7 +17,9 @@
   },
   "homepage": "https://github.com/hospital-patient-management/Northcoders-Project-NHS-App-Backend#readme",
   "devDependencies": {
+    "axios": "^0.16.2",
     "chai": "^4.1.0",
+    "faker": "^4.1.0",
     "mocha": "^3.4.2"
   }
 }
