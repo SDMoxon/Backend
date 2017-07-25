@@ -79,9 +79,11 @@ for (var i = 0; i < 14; i++) {
         },
         "nutritionalRequierments": {
             "lactose intolerance": {
+                "name": "lactose intolerance",
                 "recommendation": "dont serve milk"
             },
             "gluten intolerance": {
+                "name": "gluten intolerance",
                 "recommendation": "serve gluten-free produce"
             }
         },
@@ -106,6 +108,7 @@ for (var i = 0; i < 14; i++) {
         },
         "medication": {
             "loratadine": {
+                "name": "loratadine",
                 "type": "(CLARITIN) 10 MG tablet",
                 "commonBrandName": "CLARITIN",
                 "dosageInfo": "10 MG tablet",
@@ -114,6 +117,7 @@ for (var i = 0; i < 14; i++) {
         },
         "allergies": {
             "Oxycodone": {
+                "name": "Oxycodone",
                 "createAt": "2014-10-19T21:02:17.949Z",
                 "updatedAt": "2014-10-19T21:02:17.949Z",
                 "reactions": "swollen hands",
@@ -134,6 +138,7 @@ for (var i = 0; i < 14; i++) {
         "medicalHistory": {
             "patientHistory": {
                 "lazyitosis": {
+                    "name": "lazyitosis",
                     "date": "20-07-2017",
                     "treatement": {
                         "surgeries": {
@@ -143,6 +148,7 @@ for (var i = 0; i < 14; i++) {
                     },
                     "medication": {
                         "loratadine": {
+                            "name": "loratadine",
                             "type": "(CLARITIN) 10 MG tablet",
                             "commonBrandName": "CLARITIN",
                             "dosageInfo": "10 MG tablet",
@@ -153,6 +159,7 @@ for (var i = 0; i < 14; i++) {
             },
             "familyHistory": {
                 "John Doe": {
+                    "name": "John Doe",
                     "relationship": "Parent",
                     "condition": "Acute Procrastinatory Neurosis",
                     "date": "18-07-2010"
