@@ -1,6 +1,18 @@
 const request = require('axios');
 const faker = require('faker');
 
+request.get('https://us-central1-live-northcoders-nhs-app.cloudfunctions.net/getWards')
+.then((res) => {
+let wardNames = [];
+    for (let key in res.data) {
+         wardNames.push(res.data[key].name)
+        
+    }
+console.log(wardNames)
+        return wardNames;
+})
+
+
 for (var i = 0; i < 14; i++) {
     const obj = {
         "personalDetails": {
@@ -113,6 +125,13 @@ for (var i = 0; i < 14; i++) {
                 "commonBrandName": "CLARITIN",
                 "dosageInfo": "10 MG tablet",
                 "instructions": "Take 1 tab by mouth as needed (allergies)."
+            },
+            "paracetamol": {
+                "name": "paracetamol",
+                "type": "(Tylenol) 500 MG tablet",
+                "commonBrandName": "Tylenol",
+                "dosageInfo": "500 MG tablet",
+                "instructions": "Take 2 tab by mouth every 4 hours."
             }
         },
         "allergies": {
@@ -137,8 +156,8 @@ for (var i = 0; i < 14; i++) {
         },
         "medicalHistory": {
             "patientHistory": {
-                "lazyitosis": {
-                    "name": "lazyitosis",
+                "leishmaniasis": {
+                    "name": "leishmaniasis",
                     "date": "20-07-2017",
                     "treatement": {
                         "surgeries": {
@@ -147,12 +166,12 @@ for (var i = 0; i < 14; i++) {
                         }
                     },
                     "medication": {
-                        "loratadine": {
-                            "name": "loratadine",
-                            "type": "(CLARITIN) 10 MG tablet",
+                        "Abraxane": {
+                            "name": "Abraxane",
+                            "type": "chemotherapy",
                             "commonBrandName": "CLARITIN",
-                            "dosageInfo": "10 MG tablet",
-                            "instructions": "Take 1 tab by mouth as needed (allergies)."
+                            "dosageInfo": "260 MG/m2 IV",
+                            "instructions": "260 MG/m2 to be distributed via IV"
                         }
                     }
                 }
