@@ -1,0 +1,28 @@
+path /patients {
+  read() { true }
+}
+
+path /doctors {
+  read() { true }
+}
+
+path /nurses {
+  read() { true }
+}
+
+path /wards {
+  read() { true }
+}
+
+// All individual Wards are writable by anyone.
+path /wards/{id} is Ward {
+  read() { true }
+}
+
+type Ward {
+  validate() { this.building.length <= 100 }
+
+  building: String,
+  floor: Number,
+  name: String
+}

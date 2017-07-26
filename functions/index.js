@@ -1,7 +1,7 @@
 const functions = require('firebase-functions');
 const admin = require('firebase-admin');
 const bodyParser = require('body-parser');
-// const cors = require('cors');
+const cors = require('cors')({ origin: true });
 
 admin.initializeApp(functions.config().firebase);
 
@@ -9,37 +9,39 @@ admin.initializeApp(functions.config().firebase);
 exports.addPatient = functions.https.onRequest((req, res) => {
     bodyParser.json();
     const patient = req.body;
-    giveCors(res);
-
     admin.database().ref('/patients').push(patient);
-
-    res.status(200).send(req.body);
+    
+    cors(req, res, () => {
+        res.status(200).send(patient);
+    });
 });
 
 // GET /patients
-
 exports.getPatients = functions.https.onRequest((req, res) => {
-    giveCors(res);
     admin.database().ref('/patients').once('value', function (snapshot) {
-        res.status(200).send(snapshot.val());
+        cors(req, res, () => {
+            res.status(200).send(snapshot.val());
+        });
     });
 });
 
 // GET /wards
 exports.getWards = functions.https.onRequest((req, res) => {
-    giveCors(res);
     admin.database().ref('/wards').once('value', (snapshot) => {
-        res.status(200).send(snapshot.val());
+        cors(req, res, () => {
+            res.status(200).send(snapshot.val());
+        });
     });
 });
 
 // GET /patients/:id
 exports.getPatientById = functions.https.onRequest((req, res) => {
     const id = req.query.id;
-    giveCors(res);
-    
+
     admin.database().ref(`/patients/${id}`).once('value', function (snapshot) {
-        res.status(200).send(snapshot.val());
+        cors(req, res, () => {
+            res.status(200).send(snapshot.val());
+        });
     });
 });
 
@@ -47,8 +49,7 @@ exports.getPatientById = functions.https.onRequest((req, res) => {
 exports.getPatientsByWard = functions.https.onRequest((req, res) => {
     const wardQuery = req.query.ward;
     let filterKeys;
-    giveCors(res);
-    
+
     admin.database().ref('/patients').once('value', (snapshot) => {
         filterKeys = Object.keys(snapshot.val()).reduce((acc, key) => {
             if (snapshot.val()[key].wardName === wardQuery) {
@@ -61,7 +62,9 @@ exports.getPatientsByWard = functions.https.onRequest((req, res) => {
             }
             return acc;
         }, {});
-        res.status(200).send(filterKeys);
+        cors(req, res, () => {
+            res.status(200).send(filterKeys);
+        });
     });
 });
 
@@ -70,11 +73,11 @@ exports.putVitals = functions.https.onRequest((req, res) => {
     const patientId = req.query.id;
     const dataObject = req.body;
     const timestamp = new Date();
-    giveCors(res);
 
     admin.database().ref(`/patients/${patientId}/vitals`).child(`${timestamp}`).set(dataObject);
-
-    res.status(200).send(req.body);
+    cors(req, res, () => {
+        res.status(200).send(dataObject);
+    });
 });
 
 // PUT /medication
@@ -82,22 +85,23 @@ exports.putMedication = functions.https.onRequest((req, res) => {
     const patientId = req.query.id;
     const medicationId = req.query.medication;
     const dataObject = req.body;
-    giveCors(res);
 
     admin.database().ref(`/patients/${patientId}/medication`).child(`${medicationId}`).set(dataObject);
-
-    res.status(200).send(req.body);
+    cors(req, res, () => {
+        res.status(200).send(dataObject);
+    });
 });
 
-// PUT /patientDetails
-exports.putPatientDetails = functions.https.onRequest((req, res) => {
+// PUT /personalDetails
+exports.putPersonalDetails = functions.https.onRequest((req, res) => {
     const patientId = req.query.id;
     const dataObject = req.body;
-    giveCors(res);
 
-    admin.database().ref(`/patients/${patientId}/personalDetails`).set(dataObject)
+    admin.database().ref(`/patients/${patientId}`).child('personalDetails').update(dataObject)
         .then(
-        res.end()
+            cors(req, res, () => {
+                res.status(200).send(dataObject);
+            })
         );
 });
 
@@ -107,19 +111,38 @@ exports.postCareLog = functions.https.onRequest((req, res) => {
     const patientId = req.query.id;
     const newLog = req.body;
     let timestamp = new Date();
-    giveCors(res);
+    newLog.createdAt = timestamp.toString();
+    newLog.done = false;
 
-    admin.database().ref(`/patients/${patientId}/careLog`).child(`${timestamp}`).set(newLog);
-
-    res.status(200).send(req.body);
+    admin.database().ref(`/patients/${patientId}/careLog`).push(newLog);
+    cors(req, res, () => {
+        res.status(200).send(newLog);
+    });
 });
+
+// PUT careLog
+exports.putCareLog = functions.https.onRequest((req, res) => {
+    bodyParser.json();
+    const patientId = req.query.id;
+    const careLogId = req.query.careLogId;
+    const newLog = req.body;
+    let timestamp = new Date();
+    if (newLog.done === 'true') {
+        newLog.completedAt = timestamp.toString();
+    }
+
+    admin.database().ref(`/patients/${patientId}/careLog/${careLogId}`).update(newLog);
+    cors(req, res, () => {
+        res.status(200).send(newLog);
+    });
+});
+
 
 // GET patientsById
 exports.patientByName = functions.https.onRequest((req, res) => {
     const patientName = req.query.name;
     const regex = new RegExp(patientName, 'gi');
-    let filterKeys;
-    giveCors(res);
+    let filterKeys; 
 
     admin.database().ref('/patients').once('value', (snapshot) => {
         filterKeys = Object.keys(snapshot.val()).reduce((acc, key) => {
@@ -129,12 +152,8 @@ exports.patientByName = functions.https.onRequest((req, res) => {
             }
             return acc;
         }, {});
-        res.status(200).send(filterKeys);
+        cors(req, res, () => {
+            res.status(200).send(filterKeys);
+        });
     });
 });
-
-// CORS
-const giveCors = function (res) {
-    res.set('Access-Control-Allow-Origin', "*")
-    res.set('Access-Control-Allow-Methods', 'GET, POST');
-};
