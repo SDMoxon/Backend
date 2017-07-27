@@ -5,7 +5,7 @@ const cors = require('cors')({ origin: true });
 
 admin.initializeApp(functions.config().firebase);
 
-// POST /patients/$newPatient
+// POST /patients
 exports.addPatient = functions.https.onRequest((req, res) => {
     bodyParser.json();
     const patient = req.body;
@@ -45,7 +45,7 @@ exports.getPatientById = functions.https.onRequest((req, res) => {
     });
 });
 
-// GET /wards/patients/:ward
+// GET /patients/:ward
 exports.getPatientsByWard = functions.https.onRequest((req, res) => {
     const wardQuery = req.query.ward;
     let filterKeys;
@@ -68,7 +68,7 @@ exports.getPatientsByWard = functions.https.onRequest((req, res) => {
     });
 });
 
-// PUT /vitals
+// PUT patients/:id/vitals
 exports.putVitals = functions.https.onRequest((req, res) => {
     const patientId = req.query.id;
     const dataObject = req.body;
@@ -80,7 +80,7 @@ exports.putVitals = functions.https.onRequest((req, res) => {
     });
 });
 
-// PUT /medication
+// PUT patients/:id/medication
 exports.putMedication = functions.https.onRequest((req, res) => {
     const patientId = req.query.id;
     const medicationId = req.query.medication;
@@ -92,7 +92,7 @@ exports.putMedication = functions.https.onRequest((req, res) => {
     });
 });
 
-// PUT /personalDetails
+// PUT patients/:id/personalDetails
 exports.putPersonalDetails = functions.https.onRequest((req, res) => {
     const patientId = req.query.id;
     const dataObject = req.body;
@@ -105,7 +105,7 @@ exports.putPersonalDetails = functions.https.onRequest((req, res) => {
         );
 });
 
-// POST /careLog
+// POST patients/:id/careLog
 exports.postCareLog = functions.https.onRequest((req, res) => {
     bodyParser.json();
     const patientId = req.query.id;
@@ -120,7 +120,7 @@ exports.postCareLog = functions.https.onRequest((req, res) => {
     });
 });
 
-// PUT careLog
+// PUT patients/:id/careLog/:careLogId
 exports.putCareLog = functions.https.onRequest((req, res) => {
     bodyParser.json();
     const patientId = req.query.id;
@@ -138,7 +138,7 @@ exports.putCareLog = functions.https.onRequest((req, res) => {
 });
 
 
-// GET patientsById
+// GET patients/:id
 exports.patientByName = functions.https.onRequest((req, res) => {
     const patientName = req.query.name;
     const regex = new RegExp(patientName, 'gi');
