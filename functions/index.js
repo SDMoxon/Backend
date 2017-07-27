@@ -27,7 +27,7 @@ exports.getWards = functions.https.onRequest((req, res) => {
     });
 });
 
-// GET to /patients/:id
+// GET to /patient/:id
 exports.getPatientById = functions.https.onRequest((req, res) => {
     const id = req.query.id;
 
