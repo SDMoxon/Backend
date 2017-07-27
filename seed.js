@@ -11,7 +11,7 @@ request.get('https://us-central1-live-northcoders-nhs-app.cloudfunctions.net/get
         return wardNames;
     })
     .then((wardNames) => {
-        for (var i = 0; i < 200; i++) {
+        for (var i = 0; i < 50; i++) {
             const obj = {
                 "personalDetails": {
                     "email": faker.internet.email(),
@@ -185,10 +185,12 @@ request.get('https://us-central1-live-northcoders-nhs-app.cloudfunctions.net/get
                 },
                 "wardName": wardNames[Math.floor(Math.random() * wardNames.length)],
                 "careLog": {
-                    "20140902T055022655dsadA": {
-                        "author": "Dr. Who",
-                        "witness": "Dr Who’s Phone Booth",
-                        "note": "This is a note"
+                    "-Kq3kGex9ajuYDZYc7h7": {
+                        "author": "The Game",
+                        "createdAt": "Thu Jul 27 2017 15:53:54 GMT+0000 (UTC)",
+                        "done": false,
+                        "note": "I am a note",
+                        "witness": "I am a witness"
                     }
                 }
             };
