@@ -7,6 +7,18 @@ An app designed for doctors with the aim of making their lives easier. Instead o
 * Google Cloud functions
 
 ## How to use it
+* API URL: 
+* Endpoints: 
+``` 
+GET /patients.json - gets all of the patients
+GET /patients/$id.json - gets patients by id
+GET /patients/$id/ward.json - gets patient ward, can be used to filter patients by ward
+```
+* you must add the auth code as a query 
+```
+url/endpoint.json?auth=###################
+```
+=======
 * Function URL (addPatient): https://us-central1-live-northcoders-nhs-app.cloudfunctions.net/addPatient
 * nction URL (getPatients): https://us-central1-live-northcoders-nhs-app.cloudfunctions.net/getPatients
 * Function URL (getWards): https://us-central1-live-northcoders-nhs-app.cloudfunctions.net/getWards
