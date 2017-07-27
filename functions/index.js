@@ -109,7 +109,7 @@ exports.putPersonalDetails = functions.https.onRequest((req, res) => {
 exports.postCareLog = functions.https.onRequest((req, res) => {
     bodyParser.json();
     const patientId = req.query.id;
-    const newLog = req.body;
+    const newLog = JSON.parse(req.body);
     let timestamp = new Date();
     newLog.createdAt = timestamp.toString();
     newLog.done = false;
